@@ -65,7 +65,7 @@ function hfs_permission() {
   $permissions['administer hfs module'] = array(
     'title'           => t('Add Scripts all over the site'),
     'restrict access' => TRUE,
-    'description'     => t('Users who have this permission can add and remove the scripts from the site.')
+    'description'     => t('Users who have this permission can add and remove the scripts from the site.'),
   );
 
   return $permissions;
@@ -77,7 +77,7 @@ function hfs_permission() {
  * Add scripts on overall the site which are defined on the settings page.
  */
 function hfs_process_html(&$variables) {
-   
+
   $header_scripts = variable_get('hfs_header_scripts');
   $body_scripts   = variable_get('hfs_body_scripts');
   $footer_scripts = variable_get('hfs_footer_scripts');

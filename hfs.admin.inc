@@ -10,7 +10,7 @@
 /**
  * Administrative settings.
  *
- * @return
+ * @return array
  *   Add styles and scripts in header.
  */
 function hfs_header_settings_form($form, &$form_state) {
@@ -47,7 +47,7 @@ function hfs_header_settings_form($form, &$form_state) {
  * Submit handler().
  */
 function hfs_header_settings_form_submit($form, &$form_state) {
-  $header['styles']  = $form_state['values']['styles'];
+  $header['styles'] = $form_state['values']['styles'];
   $header['scripts'] = $form_state['values']['scripts'];
   serialize($header);
   variable_set('hfs_header_scripts', $header);
@@ -56,12 +56,12 @@ function hfs_header_settings_form_submit($form, &$form_state) {
 /**
  * Administrative settings.
  *
- * @return
+ * @return array
  *   Add styles and scripts at the start of the body tag.
  */
 function hfs_body_settings_form($form, &$form_state) {
   $body_section = variable_get('hfs_body_scripts');
-  
+
   $form['hfs_body'] = array(
     '#type'        => 'fieldset',
     '#title'       => t('Add Scripts and Styles in body'),
@@ -102,7 +102,7 @@ function hfs_body_settings_form_submit($form, &$form_state) {
 /**
  * Administrative settings.
  *
- * @return
+ * @return array
  *   Add styles and scripts in footer (before closing the body tag).
  */
 function hfs_footer_settings_form($form, &$form_state) {
@@ -131,7 +131,7 @@ function hfs_footer_settings_form($form, &$form_state) {
     '#type'  => 'submit',
     '#value' => 'Save Footer Settings',
   );
-  
+
   return $form;
 }  //  End of hfs_footer_settings_form().
 
@@ -139,7 +139,7 @@ function hfs_footer_settings_form($form, &$form_state) {
  * Submit handler().
  */
 function hfs_footer_settings_form_submit($form, &$form_state) {
-  $footer['styles']  = $form_state['values']['styles'];
+  $footer['styles'] = $form_state['values']['styles'];
   $footer['scripts'] = $form_state['values']['scripts'];
   serialize($footer);
   variable_set('hfs_footer_scripts', $footer);
