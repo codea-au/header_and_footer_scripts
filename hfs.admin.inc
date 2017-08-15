@@ -42,7 +42,7 @@ function hfs_header_settings_form($form, &$form_state) {
   );
 
   return $form;
-} // End of hfs_header_settings().
+}
 
 /**
  * Submit handler().
@@ -91,7 +91,7 @@ function hfs_body_settings_form($form, &$form_state) {
   );
 
   return $form;
-} // End of hfs_body_settings_form().
+}
 
 /**
  * Submit handler().
@@ -140,7 +140,7 @@ function hfs_footer_settings_form($form, &$form_state) {
   );
 
   return $form;
-} // End of hfs_footer_settings_form().
+}
 
 /**
  * Submit handler().
