@@ -3,7 +3,7 @@
 /**
  * @file
  * Enables Drupal to add scripts and styles from the frontend on all over the
- * site at anywhere in the page.
+   site at anywhere in the page.
  */
 
 /**

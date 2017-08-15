@@ -42,7 +42,7 @@ function hfs_header_settings_form($form, &$form_state) {
   );
 
   return $form;
-}//  End of hfs_header_settings().
+} // End of hfs_header_settings().
 
 /**
  * Submit handler().
@@ -84,14 +84,14 @@ function hfs_body_settings_form($form, &$form_state) {
     '#description'   => t('<p>On mostly sites, this section is used to add the <strong>Google Tag Manager</strong>. <strong>Like:</strong></p><p>1. &lt;!-- Google Tag Manager --&gt;&lt;noscript&gt;<strong>Write Your code here</strong>&lt;/script&gt;&lt;!-- End Google Tag Manager --&gt;</p><p>You can also add multiple <strong>scripts</strong> here with multiple ways, For example: </p><p>1. &lt;script type="text/javascript" src="http://www.example.com/script.js"&gt;&lt;/script&gt;</p><p> 2. &lt;script type="text/javascript" src="/script.js"&gt;&lt;/script&gt;</p><p> 3. &lt;script type="text/javascript"&gt;&lt;!--//--&gt;&lt;![CDATA[//&gt;&lt;!--// close script tag //--&gt;&lt;!]]&gt;&lt;/script&gt;</p>'),
     '#rows'          => 10,
   );
-  
+
   $form['submit'] = array(
     '#type'  => 'submit',
     '#value' => 'Save Body Settings',
   );
 
   return $form;
-}//  End of hfs_body_settings_form().
+} // End of hfs_body_settings_form().
 
 /**
  * Submit handler().
@@ -140,7 +140,7 @@ function hfs_footer_settings_form($form, &$form_state) {
   );
 
   return $form;
-}//  End of hfs_footer_settings_form().
+} // End of hfs_footer_settings_form().
 
 /**
  * Submit handler().
