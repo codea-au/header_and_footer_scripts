@@ -1,5 +1,0 @@
-name = HFS (Header Footer Scripts)
-description = "This plugin allows you to add the scripts and styles on overall site from the front-end. No need to open files and add them there"
-core = 7.x
-package = HFS
-configure = admin/config/development/hfs

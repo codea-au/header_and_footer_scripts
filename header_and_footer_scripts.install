@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Uninstall functions for header_and_footer_scripts module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function header_and_footer_scripts_uninstall() {
+  \Drupal::service('config.factory')->getEditable('hfs_body_scripts.settings')->delete();
+  \Drupal::service('config.factory')->getEditable('hfs_footer_scripts.settings')->delete();
+}

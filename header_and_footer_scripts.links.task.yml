@@ -1,0 +1,8 @@
+hfs.admin.body_settings:
+  route_name: hfs.admin.body_settings
+  title: 'Body Scripts'
+  base_route: hfs.admin.body_settings
+hfs.admin.footer_settings:
+  route_name: hfs.admin.footer_settings
+  title: 'Footer Scripts'
+  base_route: hfs.admin.body_settings
