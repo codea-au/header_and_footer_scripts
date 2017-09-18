@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * This Class Provides the settings page for adding CSS/JS before the end of body tag on the site.
+ * Provide settings page for adding CSS/JS before the end of body tag.
  */
 class FooterForm extends ConfigFormBase {
 
@@ -29,7 +29,7 @@ class FooterForm extends ConfigFormBase {
    * Implements FormBuilder::buildForm.
    */
   public function buildForm(array $form, FormStateInterface $form_state, Request $request = NULL) {
-    $footer_section =  $this->config('hfs_footer_scripts.settings')->get();
+    $footer_section = $this->config('hfs_footer_scripts.settings')->get();
 
     $form['hfs_footer'] = [
       '#type'        => 'fieldset',

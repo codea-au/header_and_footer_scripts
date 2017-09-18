@@ -7,10 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * This Class Provides the settings page for adding CSS/JS after the body tag on the site.
+ * Provide settings page for adding CSS/JS after the start of body tag.
  */
 class BodyForm extends ConfigFormBase {
-  
+
   /**
    * Implements FormBuilder::getFormId.
    */
@@ -33,8 +33,8 @@ class BodyForm extends ConfigFormBase {
 
     $form['hfs_body'] = [
       '#type'        => 'fieldset',
-      '#title'       => t('Add Scripts and Styles in body'),
-      '#description' => t('All the defined scripts and styles in this section would be added next to <strong>body</strong> tag.'),
+      '#title'       => $this->t('Add Scripts and Styles in body'),
+      '#description' => $this->t('All the defined scripts and styles in this section would be added next to <strong>body</strong> tag.'),
     ];
 
     $form['hfs_body']['styles'] = [

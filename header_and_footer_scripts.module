@@ -2,8 +2,8 @@
 
 /**
  * @file
- * Enables Drupal to add scripts and styles from frontend
- * on all over the site.
+ * Add scripts and styles from the frontend on all over the site.
+ * Attach the Scripts and Styles as per your need.
  */
 
 /**
@@ -54,7 +54,8 @@ function header_and_footer_scripts_page_top(array &$page_top) {
           $attr_key_value = explode('=', $attr);
           if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $style_attr[$attr_key_value[0]] = $attr_key_value[1];
-          } else {
+          }
+          else {
             $style_attr[$attr_key_value[0]] = $attr_key_value[0];
           }
         }
@@ -111,7 +112,8 @@ function header_and_footer_scripts_page_top(array &$page_top) {
           $attr_key_value = explode('=', $attr);
           if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $script_attr[$attr_key_value[0]] = $attr_key_value[1];
-          } else {
+          }
+          else {
             $script_attr[$attr_key_value[0]] = $attr_key_value[0];
           }
         }
@@ -123,7 +125,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
         '#value' => $value,
       ];
       if (is_array($script_attr)) {
-        $page_top['top_scripts_'.$i]['#attributes'] = $script_attr;
+        $page_top['top_scripts_' . $i]['#attributes'] = $script_attr;
       }
       $i++;
     }
@@ -151,7 +153,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
       $style_attr = '';
       $value      = '';
 
-      $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);        
+      $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);
       $get_style_attr   = preg_split('/(>)/', $style_attributes, 2);
 
       if (isset($get_style_attr[1])) {
@@ -178,7 +180,8 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
           $attr_key_value = explode('=', $attr);
           if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $style_attr[$attr_key_value[0]] = $attr_key_value[1];
-          } else {
+          }
+          else {
             $style_attr[$attr_key_value[0]] = $attr_key_value[0];
           }
         }
@@ -200,13 +203,15 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
     $i = 1;
     foreach ($output_scripts as $row) {
 
-      if (empty($row)) continue;
+      if (empty($row)) {
+        continue;
+      }
 
       $script_tag  = 'script';
       $script_attr = '';
       $value       = '';
 
-      $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);        
+      $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);
       $get_script_attr   = preg_split('/(>)/', $script_attributes, 2);
 
       if (isset($get_script_attr[1])) {
@@ -233,7 +238,8 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
           $attr_key_value = explode('=', $attr);
           if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $script_attr[$attr_key_value[0]] = $attr_key_value[1];
-          } else {
+          }
+          else {
             $script_attr[$attr_key_value[0]] = $attr_key_value[0];
           }
         }
