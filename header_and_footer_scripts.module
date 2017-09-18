@@ -2,38 +2,44 @@
 
 /**
  * @file
- * Enables Drupal to add scripts and styles from frontend on all over the site.
+ * Enables Drupal to add scripts and styles from frontend
+ * on all over the site.
  */
 
 /**
  * Implements hook_page_top().
  *
- * Add scripts after the body tag on overall the site which are defined on the settings page.
+ * Add scripts after the body tag on overall the site
+ * which are defined on the settings page.
  */
 function header_and_footer_scripts_page_top(array &$page_top) {
-  $body_section  = \Drupal::config('hfs_body_scripts.settings')->get();
+  $body_section = \Drupal::config('hfs_body_scripts.settings')->get();
   if (isset($body_section['styles']) && !empty($body_section['styles'])) {
     $output_styles = preg_split("/(<\/style>|\/>)/", $body_section['styles']);
     $i = 1;
     foreach ($output_styles as $row) {
 
-      if (empty($row)) continue;
+      if (empty($row)) {
+        continue;
+      }
 
       $style_tag  = 'style';
       $style_attr = '';
-      $value       = '';
+      $value      = '';
 
       $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);
       $get_style_attr   = preg_split('/(>)/', $style_attributes, 2);
 
-      if (isset($get_style_attr[1]))
+      if (isset($get_style_attr[1])) {
         $value = $get_style_attr[1];
+      }
 
       $get_style_tag = preg_split('/<link/', $row, 2);
 
-      if (isset($get_style_tag[1]))
-        $style_tag  = 'link';
-      
+      if (isset($get_style_tag[1])) {
+        $style_tag = 'link';
+      }
+
       if (isset($get_style_attr[0]) && !empty($get_style_attr[0])) {
         $get_attr   = preg_replace('/(\'|\")/', '', $get_style_attr[0]);
         $get_attr   = preg_replace('/\s+/', ',', $get_attr);
@@ -41,23 +47,27 @@ function header_and_footer_scripts_page_top(array &$page_top) {
         $fetch_attr = explode(',', $get_attr);
 
         foreach ($fetch_attr as $attr) {
-          if (empty($attr)) continue;
-          
+          if (empty($attr)) {
+            continue;
+          }
+
           $attr_key_value = explode('=', $attr);
-          if (isset($attr_key_value[0]) && isset($attr_key_value[1]))
+          if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $style_attr[$attr_key_value[0]] = $attr_key_value[1];
-          else
+          } else {
             $style_attr[$attr_key_value[0]] = $attr_key_value[0];
+          }
         }
       }
 
-      $page_top['top_styles_'.$i] = [
-        '#type'       => 'html_tag',
-        '#tag'        => $style_tag,
-        '#value'      => $value
+      $page_top['top_styles_' . $i] = [
+        '#type'  => 'html_tag',
+        '#tag'   => $style_tag,
+        '#value' => $value,
       ];
-      if (is_array($style_attr))
-        $page_top['top_styles_'.$i]['#attributes'] = $style_attr;
+      if (is_array($style_attr)) {
+        $page_top['top_styles_' . $i]['#attributes'] = $style_attr;
+      }
       $i++;
     }
   }
@@ -66,22 +76,26 @@ function header_and_footer_scripts_page_top(array &$page_top) {
     $i = 1;
     foreach ($output_scripts as $row) {
 
-      if (empty($row)) continue;
+      if (empty($row)) {
+        continue;
+      }
 
       $script_tag  = 'script';
       $script_attr = '';
       $value       = '';
-      
+
       $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);
       $get_script_attr   = preg_split('/(>)/', $script_attributes, 2);
 
-      if (isset($get_script_attr[1]))
+      if (isset($get_script_attr[1])) {
         $value = $get_script_attr[1];
+      }
 
       $get_script_tag = preg_split('/<noscript/', $row, 2);
 
-      if (isset($get_script_tag[1]))
-        $script_tag  = 'noscript';
+      if (isset($get_script_tag[1])) {
+        $script_tag = 'noscript';
+      }
 
       if (isset($get_script_attr[0]) && !empty($get_script_attr[0])) {
         $get_attr   = preg_replace('/(\'|\")/', '', $get_script_attr[0]);
@@ -90,23 +104,27 @@ function header_and_footer_scripts_page_top(array &$page_top) {
         $fetch_attr = explode(',', $get_attr);
 
         foreach ($fetch_attr as $attr) {
-          if (empty($attr)) continue;
-          
+          if (empty($attr)) {
+            continue;
+          }
+
           $attr_key_value = explode('=', $attr);
-          if (isset($attr_key_value[0]) && isset($attr_key_value[1]))
+          if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $script_attr[$attr_key_value[0]] = $attr_key_value[1];
-          else
+          } else {
             $script_attr[$attr_key_value[0]] = $attr_key_value[0];
+          }
         }
       }
 
-      $page_top['top_scripts_'.$i] = [
-        '#type'       => 'html_tag',
-        '#tag'        => $script_tag,
-        '#value'      => $value
+      $page_top['top_scripts_' . $i] = [
+        '#type'  => 'html_tag',
+        '#tag'   => $script_tag,
+        '#value' => $value,
       ];
-      if (is_array($script_attr))
+      if (is_array($script_attr)) {
         $page_top['top_scripts_'.$i]['#attributes'] = $script_attr;
+      }
       $i++;
     }
   }
@@ -115,7 +133,8 @@ function header_and_footer_scripts_page_top(array &$page_top) {
 /**
  * Implements hook_page_bottom().
  *
- * Add scripts before the Footer tag on overall the site which are defined on the settings page.
+ * Add scripts before the Footer tag on overall the site
+ * which are defined on the settings page.
  */
 function header_and_footer_scripts_page_bottom(array &$page_bottom) {
   $footer_section = \Drupal::config('hfs_footer_scripts.settings')->get();
@@ -124,22 +143,26 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
     $i = 1;
     foreach ($output_styles as $row) {
 
-      if (empty($row)) continue;
+      if (empty($row)) {
+        continue;
+      }
 
       $style_tag  = 'style';
       $style_attr = '';
-      $value       = '';
+      $value      = '';
 
       $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);        
       $get_style_attr   = preg_split('/(>)/', $style_attributes, 2);
 
-      if (isset($get_style_attr[1]))
+      if (isset($get_style_attr[1])) {
         $value = $get_style_attr[1];
+      }
 
       $get_style_tag = preg_split('/<link/', $row, 2);
 
-      if (isset($get_style_tag[1]))
-        $style_tag  = 'link';
+      if (isset($get_style_tag[1])) {
+        $style_tag = 'link';
+      }
 
       if (isset($get_style_attr[0]) && !empty($get_style_attr[0])) {
         $get_attr   = preg_replace('/(\'|\")/', '', $get_style_attr[0]);
@@ -148,23 +171,27 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
         $fetch_attr = explode(',', $get_attr);
 
         foreach ($fetch_attr as $attr) {
-          if (empty($attr)) continue;
+          if (empty($attr)) {
+            continue;
+          }
 
           $attr_key_value = explode('=', $attr);
-          if (isset($attr_key_value[0]) && isset($attr_key_value[1]))
+          if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $style_attr[$attr_key_value[0]] = $attr_key_value[1];
-          else
+          } else {
             $style_attr[$attr_key_value[0]] = $attr_key_value[0];
+          }
         }
       }
 
-      $page_bottom['bottom_styles_'.$i] = [
-        '#type'       => 'html_tag',
-        '#tag'        => $style_tag,
-        '#value'      => $value
+      $page_bottom['bottom_styles_' . $i] = [
+        '#type'  => 'html_tag',
+        '#tag'   => $style_tag,
+        '#value' => $value,
       ];
-      if (is_array($style_attr))
-        $page_bottom['bottom_styles_'.$i]['#attributes'] = $style_attr;
+      if (is_array($style_attr)) {
+        $page_bottom['bottom_styles_' . $i]['#attributes'] = $style_attr;
+      }
       $i++;
     }
   }
@@ -182,13 +209,15 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
       $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);        
       $get_script_attr   = preg_split('/(>)/', $script_attributes, 2);
 
-      if (isset($get_script_attr[1]))
+      if (isset($get_script_attr[1])) {
         $value = $get_script_attr[1];
+      }
 
       $get_script_tag = preg_split('/<noscript/', $row, 2);
 
-      if (isset($get_script_tag[1]))
-        $script_tag  = 'noscript';
+      if (isset($get_script_tag[1])) {
+        $script_tag = 'noscript';
+      }
 
       if (isset($get_script_attr[0]) && !empty($get_script_attr[0])) {
         $get_attr   = preg_replace('/(\'|\")/', '', $get_script_attr[0]);
@@ -197,23 +226,27 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
         $fetch_attr = explode(',', $get_attr);
 
         foreach ($fetch_attr as $attr) {
-          if (empty($attr)) continue;
+          if (empty($attr)) {
+            continue;
+          }
 
           $attr_key_value = explode('=', $attr);
-          if (isset($attr_key_value[0]) && isset($attr_key_value[1]))
+          if (isset($attr_key_value[0]) && isset($attr_key_value[1])) {
             $script_attr[$attr_key_value[0]] = $attr_key_value[1];
-          else
+          } else {
             $script_attr[$attr_key_value[0]] = $attr_key_value[0];
+          }
         }
       }
 
-      $page_bottom['bottom_scripts_'.$i] = [
-        '#type'       => 'html_tag',
-        '#tag'        => $script_tag,
-        '#value'      => $value
+      $page_bottom['bottom_scripts_' . $i] = [
+        '#type'  => 'html_tag',
+        '#tag'   => $script_tag,
+        '#value' => $value,
       ];
-      if (is_array($script_attr))
-        $page_bottom['bottom_scripts_'.$i]['#attributes'] = $script_attr;
+      if (is_array($script_attr)) {
+        $page_bottom['bottom_scripts_' . $i]['#attributes'] = $script_attr;
+      }
       $i++;
     }
   }
