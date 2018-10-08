@@ -15,4 +15,7 @@ function header_and_footer_scripts_uninstall() {
   \Drupal::service('config.factory')
     ->getEditable('hfs_footer_scripts.settings')
     ->delete();
+  \Drupal::service('config.factory')
+    ->getEditable('hfs_header_scripts.settings')
+    ->delete();
 }

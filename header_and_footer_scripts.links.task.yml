@@ -1,3 +1,7 @@
+hfs.admin.header_settings:
+  route_name: hfs.admin.header_settings
+  title: 'Header Scripts'
+  base_route: hfs.admin.body_settings
 hfs.admin.body_settings:
   route_name: hfs.admin.body_settings
   title: 'Body Scripts'
