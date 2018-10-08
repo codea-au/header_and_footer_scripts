@@ -15,6 +15,6 @@ INSTALLATION INSTRUCTIONS
 
 NOTES
 -----
-This module adds the styles and scripts on all over the site.
-There are 2 setting pages.
+This module adds the styles and scripts on all over the site. There are 3
+setting pages.
 These setting pages are allow you add the scripts in the desired region.
