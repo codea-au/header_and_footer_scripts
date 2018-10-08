@@ -6,6 +6,22 @@
  */
 
 /**
+ * Implements hook_help().
+ */
+function header_and_footer_scripts_help($route_name,
+\Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.header_and_footer_scripts':
+      $output  = '<h2>' . t('About') . '</h2>';
+      $output .= '<p>' . t('This module allows you to add style and scripts in your site or , You don\'t need to open any file for this purpose.') . '</p>';
+      $output .= '<h2>' . t('Uses') . '</h2>';
+      $output .= '<p>' . t('Header and Footer Scripts provides you the capability to quickly add the style and scripts in your site. It provides you 3 regions (Header, Body, and Footer) of the page on which you can add the style and script. You can add custom style/script file, add Google or other Analytics code, inline css,  inline js and so on. You can configure them from the Administer -> Configuration -> Development -> HFS (Header Footer Scripts)') . '</p>';
+
+      return $output;
+  }
+}
+
+/**
  * Implements hook_page_top().
  *
  * Add scripts after the body tag on overall the site
@@ -268,7 +284,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
   if (isset($header_section['styles']) && !empty($header_section['styles'])) {
     $output_styles = preg_split("/(<\/style>|\/>)/", $header_section['styles']);
     $i = 1;
-	  $i = count($attachments['#attached']['html_head']) + 1;
+    $i = count($attachments['#attached']['html_head']) + 1;
     foreach ($output_styles as $row) {
       if (empty($row)) {
         continue;
@@ -312,23 +328,23 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
         }
       }
 
-      $attachments['#attached']['html_head'][$i][0] = array(
+      $attachments['#attached']['html_head'][$i][0] = [
         '#type'  => 'html_tag',
         '#tag'   => $style_tag,
-        '#value' => $value
-      );
+        '#value' => $value,
+      ];
       if (is_array($style_attr)) {
         $attachments['#attached']['html_head'][$i][0]['#attributes'] = $style_attr;
       }
-	    $attachments['#attached']['html_head'][$i][1] = 'header-and-footer-css-' . $i;
-		
+      $attachments['#attached']['html_head'][$i][1] = 'header-and-footer-css-' . $i;
+
       $i++;
     }
   }
   if (isset($header_section['scripts']) && !empty($header_section['scripts'])) {
     $output_scripts = preg_split("/(<\/script>|<\/noscript>)/", $header_section['scripts']);
     $i = 1;
-	  $i = count($attachments['#attached']['html_head']) +1;
+    $i = count($attachments['#attached']['html_head']) + 1;
     foreach ($output_scripts as $row) {
 
       if (empty($row)) {
@@ -373,14 +389,14 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
         }
       }
 
-      $attachments['#attached']['html_head'][$i] = array(
-        array(
+      $attachments['#attached']['html_head'][$i] = [
+        [
           '#type'  => 'html_tag',
           '#tag'   => $script_tag,
           '#value' => $value,
-        ),
-        'header-and-footer-scripts-' . $i
-      );
+        ],
+        'header-and-footer-scripts-' . $i,
+      ];
       if (is_array($script_attr)) {
         $attachments['#attached']['html_head'][$i][0]['#attributes'] = $script_attr;
       }
