@@ -16,7 +16,7 @@ function header_and_footer_scripts_help($route_name, RouteMatchInterface $route_
       $output = '<h2>' . t('About') . '</h2>';
       $output .= '<p>' . t('This module allows you to add style and scripts in your site or , You do not need to open any file for this purpose.') . '</p>';
       $output .= '<h2>' . t('Uses') . '</h2>';
-      $output .= '<p>' . t('Header and Footer Scripts provides you the capability to quickly add the style and scripts in your site. It provides you 3 regions (Header, Body, and Footer) of the page on which you can add the style and script. You can add custom style/script file, add Google or other Analytics code, inline css,  inline js and so on. You can configure them from the Administer -> Configuration -> Development -> HFS (Header Footer Scripts)') . '</p>';
+      $output .= '<p>' . t('Header and Footer Scripts provides you the capability to quickly add the style and scripts in your site. It provides you 3 regions (Header, Body, and Footer) of the page on which you can add the style and script. You can add custom style/script file, add Google or other Analytics code, inline css,  inline js and so on. You can configure them from the Administer -> Configuration -> Development -> Header Footer Scripts') . '</p>';
 
       return $output;
   }
@@ -29,7 +29,7 @@ function header_and_footer_scripts_help($route_name, RouteMatchInterface $route_
  * which are defined on the settings page.
  */
 function header_and_footer_scripts_page_top(array &$page_top) {
-  $body_section = \Drupal::config('hfs_body_scripts.settings')->get();
+  $body_section = \Drupal::config('header_and_footer_scripts.body.settings')->get();
   if (isset($body_section['styles']) && !empty($body_section['styles'])) {
     $output_styles = preg_split("/(<\/style>|\/>)/", $body_section['styles']);
     $i = 1;
@@ -155,7 +155,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
  * which are defined on the settings page.
  */
 function header_and_footer_scripts_page_bottom(array &$page_bottom) {
-  $footer_section = \Drupal::config('hfs_footer_scripts.settings')->get();
+  $footer_section = \Drupal::config('header_and_footer_scripts.footer.settings')->get();
   if (isset($footer_section['styles']) && !empty($footer_section['styles'])) {
     $output_styles = preg_split("/(<\/style>|\/>)/", $footer_section['styles']);
     $i = 1;
@@ -281,7 +281,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
  * which are defined on the settings page.
  */
 function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
-  $header_section = \Drupal::config('hfs_header_scripts.settings')->get();
+  $header_section = \Drupal::config('header_and_footer_scripts.header.settings')->get();
   if (isset($header_section['styles']) && !empty($header_section['styles'])) {
     $output_styles = preg_split("/(<\/style>|\/>)/", $header_section['styles']);
     $i = 1;

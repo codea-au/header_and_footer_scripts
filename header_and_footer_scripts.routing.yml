@@ -1,21 +1,21 @@
-hfs.admin.header_settings:
-  path: '/admin/config/development/hfs/header'
+header_and_footer_scripts.admin.header:
+  path: '/admin/config/development/header-and-footer-scripts/header'
   defaults:
     _form: '\Drupal\header_and_footer_scripts\Form\HeaderForm'
-    _title: 'HFS (Header Footer Scripts)'
+    _title: 'Header Footer Scripts Settings for head'
   requirements:
     _permission: 'header_and_footer_scripts_settings'
-hfs.admin.body_settings:
-  path: '/admin/config/development/hfs/body'
+header_and_footer_scripts.admin.body:
+  path: '/admin/config/development/header-and-footer-scripts/body'
   defaults:
     _form: '\Drupal\header_and_footer_scripts\Form\BodyForm'
-    _title: 'HFS (Header Footer Scripts) for Body'
+    _title: 'Header and Footer Scripts Settings for Body'
   requirements:
     _permission: 'header_and_footer_scripts_settings'
-hfs.admin.footer_settings:
-  path: '/admin/config/development/hfs/footer'
+header_and_footer_scripts.admin.footer:
+  path: '/admin/config/development/header-and-footer-scripts/footer'
   defaults:
     _form: '\Drupal\header_and_footer_scripts\Form\FooterForm'
-    _title: 'HFS (Header Footer Scripts) for Footer'
+    _title: 'Header and Footer Scripts Settings for Footer'
   requirements:
     _permission: 'header_and_footer_scripts_settings'

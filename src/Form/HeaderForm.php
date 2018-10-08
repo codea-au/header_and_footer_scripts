@@ -22,14 +22,14 @@ class HeaderForm extends ConfigFormBase {
    * Implements ConfigFormBase::getEditableConfigNames.
    */
   protected function getEditableConfigNames() {
-    return ['hfs_header_scripts.settings'];
+    return ['header_and_footer_scripts.header.settings'];
   }
 
   /**
    * Implements FormBuilder::buildForm.
    */
   public function buildForm(array $form, FormStateInterface $form_state, Request $request = NULL) {
-    $header_section = $this->config('hfs_header_scripts.settings')->get();
+    $header_section = $this->config('header_and_footer_scripts.header.settings')->get();
 
     $form['hfs_header'] = [
       '#type'        => 'fieldset',
@@ -65,7 +65,7 @@ class HeaderForm extends ConfigFormBase {
     $values = $form_state->getValues();
 
     $this->configFactory()
-      ->getEditable('hfs_header_scripts.settings')
+      ->getEditable('header_and_footer_scripts.header.settings')
       ->set('styles', $values['styles'])
       ->set('scripts', $values['scripts'])
       ->save();

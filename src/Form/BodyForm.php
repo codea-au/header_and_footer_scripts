@@ -22,14 +22,14 @@ class BodyForm extends ConfigFormBase {
    * Implements ConfigFormBase::getEditableConfigNames.
    */
   protected function getEditableConfigNames() {
-    return ['hfs_body_scripts.settings'];
+    return ['header_and_footer_scripts.body.settings'];
   }
 
   /**
    * Implements FormBuilder::buildForm.
    */
   public function buildForm(array $form, FormStateInterface $form_state, Request $request = NULL) {
-    $body_section = $this->config('hfs_body_scripts.settings')->get();
+    $body_section = $this->config('header_and_footer_scripts.body.settings')->get();
 
     $form['hfs_body'] = [
       '#type'        => 'fieldset',
@@ -65,7 +65,7 @@ class BodyForm extends ConfigFormBase {
     $values = $form_state->getValues();
 
     $this->configFactory()
-      ->getEditable('hfs_body_scripts.settings')
+      ->getEditable('header_and_footer_scripts.body.settings')
       ->set('styles', $values['styles'])
       ->set('scripts', $values['scripts'])
       ->save();

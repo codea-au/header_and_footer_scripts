@@ -1,12 +1,12 @@
-hfs.admin.header_settings:
-  route_name: hfs.admin.header_settings
+header_and_footer_scripts.admin.header:
+  route_name: header_and_footer_scripts.admin.header
   title: 'Header Scripts'
-  base_route: hfs.admin.header_settings
-hfs.admin.body_settings:
-  route_name: hfs.admin.body_settings
+  base_route: header_and_footer_scripts.admin.header
+header_and_footer_scripts.admin.body:
+  route_name: header_and_footer_scripts.admin.body
   title: 'Body Scripts'
-  base_route: hfs.admin.header_settings
-hfs.admin.footer_settings:
-  route_name: hfs.admin.footer_settings
+  base_route: header_and_footer_scripts.admin.header
+header_and_footer_scripts.admin.footer:
+  route_name: header_and_footer_scripts.admin.footer
   title: 'Footer Scripts'
-  base_route: hfs.admin.header_settings
+  base_route: header_and_footer_scripts.admin.header
