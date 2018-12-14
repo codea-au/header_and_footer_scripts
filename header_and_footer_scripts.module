@@ -40,7 +40,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
       }
 
       $style_tag  = 'style';
-      $style_attr = '';
+      $style_attr = [];
       $value      = '';
 
       $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);
@@ -82,7 +82,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
         '#tag'   => $style_tag,
         '#value' => $value,
       ];
-      if (is_array($style_attr)) {
+      if (!empty($style_attr)) {
         $page_top['top_styles_' . $i]['#attributes'] = $style_attr;
       }
       $i++;
@@ -98,7 +98,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
       }
 
       $script_tag  = 'script';
-      $script_attr = '';
+      $script_attr = [];
       $value       = '';
 
       $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);
@@ -140,7 +140,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
         '#tag'   => $script_tag,
         '#value' => $value,
       ];
-      if (is_array($script_attr)) {
+      if (!empty($script_attr)) {
         $page_top['top_scripts_' . $i]['#attributes'] = $script_attr;
       }
       $i++;
@@ -166,7 +166,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
       }
 
       $style_tag  = 'style';
-      $style_attr = '';
+      $style_attr = [];
       $value      = '';
 
       $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);
@@ -208,7 +208,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
         '#tag'   => $style_tag,
         '#value' => $value,
       ];
-      if (is_array($style_attr)) {
+      if (!empty($style_attr)) {
         $page_bottom['bottom_styles_' . $i]['#attributes'] = $style_attr;
       }
       $i++;
@@ -224,7 +224,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
       }
 
       $script_tag  = 'script';
-      $script_attr = '';
+      $script_attr = [];
       $value       = '';
 
       $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);
@@ -266,7 +266,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
         '#tag'   => $script_tag,
         '#value' => $value,
       ];
-      if (is_array($script_attr)) {
+      if (!empty($script_attr)) {
         $page_bottom['bottom_scripts_' . $i]['#attributes'] = $script_attr;
       }
       $i++;
@@ -292,7 +292,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
       }
 
       $style_tag  = 'style';
-      $style_attr = '';
+      $style_attr = [];
       $value      = '';
 
       $style_attributes = preg_replace('/(<style|<link)/', '', $row, 1);
@@ -334,7 +334,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
         '#tag'   => $style_tag,
         '#value' => $value,
       ];
-      if (is_array($style_attr)) {
+      if (!empty($style_attr)) {
         $attachments['#attached']['html_head'][$i][0]['#attributes'] = $style_attr;
       }
       $attachments['#attached']['html_head'][$i][1] = 'header-and-footer-css-' . $i;
@@ -353,7 +353,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
       }
 
       $script_tag  = 'script';
-      $script_attr = '';
+      $script_attr = [];
       $value       = '';
 
       $script_attributes = preg_replace('/(<script|<noscript)/', '', $row, 1);
@@ -398,7 +398,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
         ],
         'header-and-footer-scripts-' . $i,
       ];
-      if (is_array($script_attr)) {
+      if (!empty($script_attr)) {
         $attachments['#attached']['html_head'][$i][0]['#attributes'] = $script_attr;
       }
       $i++;
