@@ -70,7 +70,7 @@ class BodyForm extends ConfigFormBase {
       ->set('scripts', $values['scripts'])
       ->save();
 
-    drupal_set_message($this->t('Your Settings have been saved.'), 'status');
+    $this->messenger()->addStatus($this->t('Your Settings have been saved.'));
   }
 
 }

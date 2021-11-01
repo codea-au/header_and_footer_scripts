@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\Markup;
 
 /**
  * Implements hook_help().
@@ -80,7 +81,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
       $page_top['top_styles_' . $i] = [
         '#type'  => 'html_tag',
         '#tag'   => $style_tag,
-        '#value' => $value,
+        '#value' => Markup::create($value),
       ];
       if (!empty($style_attr)) {
         $page_top['top_styles_' . $i]['#attributes'] = $style_attr;
@@ -138,7 +139,7 @@ function header_and_footer_scripts_page_top(array &$page_top) {
       $page_top['top_scripts_' . $i] = [
         '#type'  => 'html_tag',
         '#tag'   => $script_tag,
-        '#value' => $value,
+        '#value' => Markup::create($value),
       ];
       if (!empty($script_attr)) {
         $page_top['top_scripts_' . $i]['#attributes'] = $script_attr;
@@ -206,7 +207,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
       $page_bottom['bottom_styles_' . $i] = [
         '#type'  => 'html_tag',
         '#tag'   => $style_tag,
-        '#value' => $value,
+        '#value' => Markup::create($value),
       ];
       if (!empty($style_attr)) {
         $page_bottom['bottom_styles_' . $i]['#attributes'] = $style_attr;
@@ -264,7 +265,7 @@ function header_and_footer_scripts_page_bottom(array &$page_bottom) {
       $page_bottom['bottom_scripts_' . $i] = [
         '#type'  => 'html_tag',
         '#tag'   => $script_tag,
-        '#value' => $value,
+        '#value' => Markup::create($value),
       ];
       if (!empty($script_attr)) {
         $page_bottom['bottom_scripts_' . $i]['#attributes'] = $script_attr;
@@ -332,7 +333,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
       $attachments['#attached']['html_head'][$i][0] = [
         '#type'  => 'html_tag',
         '#tag'   => $style_tag,
-        '#value' => $value,
+        '#value' => Markup::create($value),
       ];
       if (!empty($style_attr)) {
         $attachments['#attached']['html_head'][$i][0]['#attributes'] = $style_attr;
@@ -394,7 +395,7 @@ function header_and_footer_scripts_page_attachments_alter(array &$attachments) {
         [
           '#type'  => 'html_tag',
           '#tag'   => $script_tag,
-          '#value' => $value,
+          '#value' => Markup::create($value),
         ],
         'header-and-footer-scripts-' . $i,
       ];
