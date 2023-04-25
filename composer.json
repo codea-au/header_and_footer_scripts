@@ -1,5 +1,5 @@
 {
-  "name": "drupal/header_and_footer_scripts",
+  "name": "codea-clone/header_and_footer_scripts",
   "description": "Allows you to add the scripts and styles on overall site from the front-end. No need to open files and add them there.",
   "type": "drupal-module",
   "license": "GPL-2.0-or-later",
