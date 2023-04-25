@@ -23,7 +23,7 @@
   },
   "require": {
     "php": "^7.4 || ^8.0",
-    "drupal/core": "^8 || ^9"
+    "drupal/core": "^8 || ^9 || ^10"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
